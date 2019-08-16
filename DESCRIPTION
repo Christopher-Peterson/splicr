@@ -1,16 +1,19 @@
 Package: splicr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Multiple Argument Piping in R
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Christopher R. Peterson
+Maintainer: Christopher R. Peterson <Christopher.r.peterson@utexas.edu>
+Description: The multi-pipe operator (lhs %!>% rhs) passes the elements
+    of a list (lhs) into the arguments of a function call (rhs), 
+    matching by name and position. This can allow users to chain 
+    together functions with multiple inputs and outputs. The multi-pipe
+    also enables simple argument splicing for any R function.  
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat (>= 2.1.0)
 Imports: 
-    rlang
+    rlang (>= 0.3.0)
 RoxygenNote: 6.1.1

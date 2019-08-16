@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/Christopher-Peterson/splicr.svg?branch=master)](https://travis-ci.org/Christopher-Peterson/splicr)
 <!-- badges: end -->
 
 The `splicr` package implements a new pipe operator, `%!>%`, which uses
@@ -81,7 +83,7 @@ Unnamed arguments will be placed in the first available position.
 
 ``` r
 list("A", "Not B") %!>% example_fun(b = "B", "Not C")
-#> [1] "a = A, b = B, c = Not C, d = D"
+#> [1] "a = A, b = B, c = Not B, d = Not C"
 ```
 
 ### Named arguments have right precedence
@@ -143,7 +145,7 @@ list("B") %!>% (factory("Hrm?"))
 It’s straightforward to combine `%!>%` with `%>%` as part of chain:
 
 ``` r
-library(purrr)
+library(purrr, quietly = TRUE)
 #> 
 #> Attaching package: 'purrr'
 #> The following object is masked from 'package:magrittr':

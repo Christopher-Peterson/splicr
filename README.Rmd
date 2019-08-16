@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 # splicr: multiple argument piping in R
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/Christopher-Peterson/splicr.svg?branch=master)](https://travis-ci.org/Christopher-Peterson/splicr)
 <!-- badges: end -->
 
 The `splicr` package implements a new pipe operator, `%!>%`, which uses the values of a list on the left as arguments for a right-hand function call.
@@ -120,7 +121,7 @@ list("B") %!>% (factory("Hrm?"))
 It's straightforward to combine `%!>%` with `%>%` as part of chain:
 
 ```{r with_mag} 
-library(purrr)
+library(purrr, quietly = TRUE)
 
 # simulate some random numbers, and see how much
 # their range differs among samples
