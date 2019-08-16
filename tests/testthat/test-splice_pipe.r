@@ -1,7 +1,7 @@
 test_fun = function(a, b = 1, c = 2, d = 3) {
   paste0("a = ", a, ", b = ", b, ", c = ", c,", d = ", d)
 }
-browser()
+# browser()
 test_that("pipe works for bare functions", {
  expect_equal(list("A", b = "B") %!>% test_fun,
               "a = A, b = B, c = 2, d = 3")
@@ -18,6 +18,12 @@ test_that("Positional arguments defer to lhs", {
   expect_equal(list("A", b = "B") %!>%
                  test_fun("This is C", d = 12),
                "a = A, b = B, c = This is C, d = 12")
+  expect_equal(list("A", "B") %!>%
+                 test_fun("Not A", "Not B"),
+               "a = A, b = B, c = Not A, d = Not B")
+  expect_equal(list("A", "Not B") %!>%
+                 test_fun(b = "B", "Not C"),
+               "a = A, b = B, c = Not B, d = Not C")
 })
 test_that("Named arguments defer to rhs", {
   expect_warning(expect_equal(
@@ -60,3 +66,11 @@ test_that("Check to see if it works inside functions", {
   }
   expect_equal(closure_fun("and his dog"), "A boy and his dog")
 })
+
+# library(magrittr)
+# set.seed(209490)
+# list(n = rpois(5, 30),
+#      min = runif(5, 0, 10),
+#      max = runif(5, 11, 50)) %!>%
+#   mapply(FUN = runif) %>% vapply(mean, 1.0)
+
